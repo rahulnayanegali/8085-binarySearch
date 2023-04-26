@@ -135,13 +135,13 @@ End
 ```ARM Assembly
 ; Set B to 8, which represents the last index of the array to fill
 
-MVIB, 8
+MVI B, 8
 
 ; Set HL pointer to the beginning of the memory
 
-MVIH, 0
+MVI H, 0
 
-MVIL, 0
+MVI L, 0
 
 ; Loop to fill memory with values 1, 2, 3, ..., 8
 
@@ -153,27 +153,27 @@ MOV A, L; Copy the value of L to the accumulator A
 
 CMP B; Compare the value of A with B (last index)
 
-JMloop; Jump to loop if the value of A is less than B
+JM loop; Jump to loop if the value of A is less than B
 
 ; Binary search algorithm
 
 ; Initialize variables for binary search
 
-MVIB, 0; Set B as the lower bound index (0)
+MVI B, 0; Set B as the lower bound index (0)
 
-MVIC, 8; Set C as the upper bound index (8)
+MVI C, 8; Set C as the upper bound index (8)
 
-MVID, 5; Set D as the value to search for
+MVI D, 5; Set D as the value to search for
 
-MVIL, 9; Set L as the memory address where the result will be stored
+MVI L, 9; Set L as the memory address where the result will be stored
 
-MVIM, 225; Set the initial value of the result to 225, which means not found
+MVI M, 225; Set the initial value of the result to 225, which means not found
 
 while: MOV A, C; Copy the value of C to the accumulator A
 
 CMP B; Compare the value of A with B (lower bound)
 
-JMexit; If A is less than B, exit the loop
+JM exit; If A is less than B, exit the loop
 
 ; Calculate the middle index between the upper and lower bounds
 
@@ -199,9 +199,9 @@ CMP D
 
 JZ equals; If A is equal to D, jump to equals
 
-JMless; If A is less than D, jump to less
+JM less; If A is less than D, jump to less
 
-JPgreater; If A is greater than D, jump to greater
+JP greater; If A is greater than D, jump to greater
 
 equals: MVIL, 9; Set L as the memory address where the result will be stored
 
@@ -211,7 +211,7 @@ JMP exit; Jump to exit
 
 less: MOV A, E; Move the middle index to A
 
-INRA; Increase the value of A by 1
+INR A; Increase the value of A by 1
 
 MOV B, A; Move the new value of A to B (new lower bound)
 
@@ -219,7 +219,7 @@ JMP while; Jump to while
 
 greater: MOV A, E; Move the middle index to A
 
-DCRA; Increase the value of A by 1
+DCR A; Increase the value of A by 1
 
 MOV C, A; Move the new value of A to C (new upper bound)
 
@@ -236,15 +236,15 @@ In the second part, the code initializes variables for the binary search algorit
 
 Here **MVI** stands for Move Immediate i.e., setting hard coded value to registers.
 ```ARM Assembly
-MVIB, 0; Set B as the lower bound index (0)
+MVI B, 0; Set B as the lower bound index (0)
 
-MVIC, 8; Set C as the upper bound index (8)
+MVI C, 8; Set C as the upper bound index (8)
 
-MVID, 5; Set D as the value to search for
+MVI D, 5; Set D as the value to search for
 
-MVIL, 9; Set L as the memory address where the result will be stored
+MVI L, 9; Set L as the memory address where the result will be stored
 
-MVIM, 225; Set the initial value of the result to 225, which means not found
+MVI M, 225; Set the initial value of the result to 225, which means not found
 ```
 It then uses a loop to perform the binary search algorithm. Inside the loop, it calculates the middle index between the upper and lower bounds and stores it in the **register E**.
 
@@ -304,7 +304,7 @@ If the value is less than the value to search for, it jumps to **less** label to
 ```ARM Assembly
 less: MOV A, E; Move the middle index to A
 
-INRA; Increase the value of A by 1
+INR A; Increase the value of A by 1
 
 MOV B, A; Move the new value of A to B (new lower bound)
 
@@ -314,7 +314,7 @@ If the value is greater than the value to search for, it jumps to **greater** la
 ```ARM Assembly
 greater: MOV A, E; Move the middle index to A
 
-DCRA; Increase the value of A by 1
+DCR A; Increase the value of A by 1
 
 MOV C, A; Move the new value of A to C (new upper bound)
 
