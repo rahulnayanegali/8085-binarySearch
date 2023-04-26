@@ -2,7 +2,7 @@
 
 1. Introduction to the Binary Search Algorithm:
 
-The binary search algorithm is a popular search algorithm used to locate an element in a sorted list or array. It works by repeatedly dividing the search interval in half, and comparing the middle element of the interval to the target value. If the target value is less than the middle element, the search is continued in the lower half of the interval; if the target value is greater, the search is continued in the upper half of the interval. The search continues until the target value is found or the interval is empty.
+The binary search algorithm is a popular search algorithm used to locate an element in a sorted list or array. It works by repeatedly dividing the search interval in half, and comparing the middle element of the interval to the target value. If the target value is less than the middle element, the search is continued in the lower half of the interva; if the target value is greater, the search is continued in the upper half of the interval. The search continues until the target value is found or the interval is empty.
 
 Binary search is often preferred over linear search (which searches each element one-by-one) for large datasets, as it has a worst-case time complexity of O(log n), where n is the size of the dataset. This means that the algorithm can find the target value in at most log n comparisons, making it much faster than linear search, which has a worst-case time complexity of O(n). However, binary search requires that the dataset is sorted beforehand, which can add some overhead if the dataset is frequently updated or modified. Overall, binary search is a widely-used and effective algorithm for searching sorted datasets.
 
@@ -89,143 +89,143 @@ In summary, this algorithm design initializes a memory array with values from 1 
 
 Here's the pseudo-code for the above algorithm design:
 
-![Shape1](RackMultipart20230426-1-h5mqso_html_98b6e41f054404c4.gif)
+![Shape1](RackMultipart20230426-1-h5mqsohtml98b6e41f054404c4.gif)
 
 // Initialize variables for binary search
 
-lower\_bound = 0
+lower\bound = 0
 
-upper\_bound = 7
+upper\bound = 7
 
-search\_value = 5
+search\value = 5
 
 result = -1
 
-while (upper\_bound \>= lower\_bound) do
+while (upper\bound \>= lower\bound) do
 
 // Calculate the middle index between the upper and lower bounds
 
-middle\_index = (lower\_bound + upper\_bound) / 2
+middle\index = (lower\bound + upper\bound) / 2
 
 // Get the value of the middle index from memory
 
-middle\_value = memory[middle\_index]
+middle\value = memory[middle\index]
 
-if (middle\_value == search\_value) then
+if (middle\value == search\value) then
 
-result = middle\_index
+result = middle\index
 
 exit loop
 
-else if (middle\_value \< search\_value) then
+else if (middle\value \< search\value) then
 
-lower\_bound = middle\_index + 1
+lower\bound = middle\index + 1
 
 else
 
-upper\_bound = middle\_index - 1
+upper\bound = middle\index - 1
 
 // Print the result
 
 End
 
-![](RackMultipart20230426-1-h5mqso_html_dc7d6dc28e119b38.png) Flowchart drawn using [draw.io](https://drive.google.com/file/d/1p8t8xyJM1UkG18Skx9BfgeBSFR4kRzEo/view?usp=sharing) tool.
+![](RackMultipart20230426-1-h5mqsohtmldc7d6dc28e119b38.png) Flowchart drawn using [draw.io](https://drive.google.com/file/d/1p8t8xyJM1UkG18Skx9BfgeBSFR4kRzEo/view?usp=sharing) tool.
 
 **8085 Assembly Code**
 ```ARM Assembly
-_; Set B to 8, which represents the last index of the array to fill_
+; Set B to 8, which represents the last index of the array to fill
 
 MVIB, 8
 
-_; Set HL pointer to the beginning of the memory_
+; Set HL pointer to the beginning of the memory
 
 MVIH, 0
 
 MVIL, 0
 
-_; Loop to fill memory with values 1, 2, 3, ..., 8_
+; Loop to fill memory with values 1, 2, 3, ..., 8
 
-loop: INRL_; Increase the value of L (memory address) by 1_
+loop: INRL; Increase the value of L (memory address) by 1
 
-MOV M, L_; Store the value of L to the memory address pointed by HL_
+MOV M, L; Store the value of L to the memory address pointed by HL
 
-MOV A, L_; Copy the value of L to the accumulator A_
+MOV A, L; Copy the value of L to the accumulator A
 
-CMP B_; Compare the value of A with B (last index)_
+CMP B; Compare the value of A with B (last index)
 
-JMloop_; Jump to loop if the value of A is less than B_
+JMloop; Jump to loop if the value of A is less than B
 
-_; Binary search algorithm_
+; Binary search algorithm
 
-_; Initialize variables for binary search_
+; Initialize variables for binary search
 
-MVIB, 0_; Set B as the lower bound index (0)_
+MVIB, 0; Set B as the lower bound index (0)
 
-MVIC, 8_; Set C as the upper bound index (8)_
+MVIC, 8; Set C as the upper bound index (8)
 
-MVID, 5_; Set D as the value to search for_
+MVID, 5; Set D as the value to search for
 
-MVIL, 9_; Set L as the memory address where the result will be stored_
+MVIL, 9; Set L as the memory address where the result will be stored
 
-MVIM, 225_; Set the initial value of the result to 225, which means not found_
+MVIM, 225; Set the initial value of the result to 225, which means not found
 
-while: MOV A, C_; Copy the value of C to the accumulator A_
+while: MOV A, C; Copy the value of C to the accumulator A
 
-CMP B_; Compare the value of A with B (lower bound)_
+CMP B; Compare the value of A with B (lower bound)
 
-JMexit_; If A is less than B, exit the loop_
+JMexit; If A is less than B, exit the loop
 
-_; Calculate the middle index between the upper and lower bounds_
+; Calculate the middle index between the upper and lower bounds
 
-ADD C_; Add the value of C to A (high + low)_
+ADD C; Add the value of C to A (high + low)
 
-RAR_; Shift A to the right (divide by 2)_
+RAR; Shift A to the right (divide by 2)
 
-ADD B_; Add the value of B to A (middle index)_
+ADD B; Add the value of B to A (middle index)
 
 RAR
 
-MOV E, A_; Move the middle index to E_
+MOV E, A; Move the middle index to E
 
-_; Get the value of the middle index from memory_
+; Get the value of the middle index from memory
 
-MOV L, E_; Move the memory address to L (middle index)_
+MOV L, E; Move the memory address to L (middle index)
 
-MOV A, M_; Move the value at the memory address pointed by L to A_
+MOV A, M; Move the value at the memory address pointed by L to A
 
-_; Compare the value at the middle index with the value to search for_
+; Compare the value at the middle index with the value to search for
 
 CMP D
 
-JZ equals_; If A is equal to D, jump to equals_
+JZ equals; If A is equal to D, jump to equals
 
-JMless_; If A is less than D, jump to less_
+JMless; If A is less than D, jump to less
 
-JPgreater_; If A is greater than D, jump to greater_
+JPgreater; If A is greater than D, jump to greater
 
-equals: MVIL, 9_; Set L as the memory address where the result will be stored_
+equals: MVIL, 9; Set L as the memory address where the result will be stored
 
-MOV M, E_; Move the middle index to the memory address pointed by L_
+MOV M, E; Move the middle index to the memory address pointed by L
 
-JMP exit_; Jump to exit_
+JMP exit; Jump to exit
 
-less: MOV A, E_; Move the middle index to A_
+less: MOV A, E; Move the middle index to A
 
-INRA_; Increase the value of A by 1_
+INRA; Increase the value of A by 1
 
-MOV B, A_; Move the new value of A to B (new lower bound)_
+MOV B, A; Move the new value of A to B (new lower bound)
 
-JMP while_; Jump to while_
+JMP while; Jump to while
 
-greater: MOV A, E_; Move the middle index to A_
+greater: MOV A, E; Move the middle index to A
 
-DCRA_; Increase the value of A by 1_
+DCRA; Increase the value of A by 1
 
-MOV C, A_; Move the new value of A to C (new upper bound)_
+MOV C, A; Move the new value of A to C (new upper bound)
 
-JMP while_; Jump to while_
+JMP while; Jump to while
 
-exit: HLT _; Halt the execution of the program_
+exit: HLT ; Halt the execution of the program
 ```
 
 This code contains two parts: memory initialization with values 1 to 8 and a binary search algorithm to search for a specific value within the memory.
@@ -235,31 +235,31 @@ In the first part, the code sets the value of register B to 8, which represents 
 In the second part, the code initializes variables for the binary search algorithm, including the lower ( **register B** ) and upper bounds ( **register C** ) of the memory, the value to search ( **register D** ) for, and the memory address ( **register L** ) where the result will be stored.
 
 Here **MVI** stands for Move Immediate i.e., setting hard coded value to registers.
+```ARM Assembly
+MVIB, 0; Set B as the lower bound index (0)
 
-MVIB, 0_; Set B as the lower bound index (0)_
+MVIC, 8; Set C as the upper bound index (8)
 
-MVIC, 8_; Set C as the upper bound index (8)_
+MVID, 5; Set D as the value to search for
 
-MVID, 5_; Set D as the value to search for_
+MVIL, 9; Set L as the memory address where the result will be stored
 
-MVIL, 9_; Set L as the memory address where the result will be stored_
-
-MVIM, 225_; Set the initial value of the result to 225, which means not found_
-
+MVIM, 225; Set the initial value of the result to 225, which means not found
+```
 It then uses a loop to perform the binary search algorithm. Inside the loop, it calculates the middle index between the upper and lower bounds and stores it in the **register E**.
 
-_; Calculate the middle index between the upper and lower bounds_
+; Calculate the middle index between the upper and lower bounds
+```ARM Assembly
+ADD C; Add the value of C to A (high + low)
 
-ADD C_; Add the value of C to A (high + low)_
+RAR; Shift A to the right (divide by 2)
 
-RAR_; Shift A to the right (divide by 2)_
-
-ADD B_; Add the value of B to A (middle index)_
+ADD B; Add the value of B to A (middle index)
 
 RAR
 
-MOV E, A_; Move the middle index to E_
-
+MOV E, A; Move the middle index to E
+```
 Here's a step-by-step breakdown of what's happening:
 
 1. **ADD C** : The value of register C is added to register A. Since A is being used as an accumulator, this operation effectively computes the sum of the high and low elements of the array.
@@ -273,55 +273,55 @@ Here's a step-by-step breakdown of what's happening:
 5. **MOV E, A** : The contents of register A are moved to register E. This is the result of the computation, representing the middle index of the array.
 
 It gets the value of the middle index from memory into accumulator.
+```ARM Assembly
+; Get the value of the middle index from memory
 
-_; Get the value of the middle index from memory_
+MOV L, E; Move the memory address to L (middle index)
 
-MOV L, E_; Move the memory address to L (middle index)_
-
-MOV A, M_; Move the value at the memory address pointed by L to A_
+MOV A, M; Move the value at the memory address pointed by L to A
 
 And compares it with the value to search for i.e., with **register D**.
 
-_; Compare the value at the middle index with the value to search for_
+; Compare the value at the middle index with the value to search for
 
 CMP D
 
-JZ equals_; If A is equal to D, jump to equals_
+JZ equals; If A is equal to D, jump to equals
 
-JMless_; If A is less than D, jump to less_
+JMless; If A is less than D, jump to less
 
-JPgreater_; If A is greater than D, jump to greater_
+JPgreater; If A is greater than D, jump to greater
 
 If the value is found, it jumps to **equals** label to stores the middle index in memory and exits the loop.
 
-equals: MVIL, 9_; Set L as the memory address where the result will be stored_
+equals: MVIL, 9; Set L as the memory address where the result will be stored
 
-MOV M, E_; Move the middle index to the memory address pointed by L_
+MOV M, E; Move the middle index to the memory address pointed by L
 
-JMP exit_; Jump to exit_
-
+JMP exit; Jump to exit
+```
 If the value is less than the value to search for, it jumps to **less** label to updates the lower bound and jumps back to the loop.
+```ARM Assembly
+less: MOV A, E; Move the middle index to A
 
-less: MOV A, E_; Move the middle index to A_
+INRA; Increase the value of A by 1
 
-INRA_; Increase the value of A by 1_
+MOV B, A; Move the new value of A to B (new lower bound)
 
-MOV B, A_; Move the new value of A to B (new lower bound)_
-
-JMP while_; Jump to while_
-
+JMP while; Jump to while
+```
 If the value is greater than the value to search for, it jumps to **greater** label to updates the upper bound and jumps back to the loop. Finally, it halts the execution of the program.
+```ARM Assembly
+greater: MOV A, E; Move the middle index to A
 
-greater: MOV A, E_; Move the middle index to A_
+DCRA; Increase the value of A by 1
 
-DCRA_; Increase the value of A by 1_
+MOV C, A; Move the new value of A to C (new upper bound)
 
-MOV C, A_; Move the new value of A to C (new upper bound)_
+JMP while; Jump to while
 
-JMP while_; Jump to while_
-
-exit: HLT _; Halt the execution of the program_
-
+exit: HLT ; Halt the execution of the program
+```
 Overall, this code initializes memory with values 1 to 8 and performs a binary search algorithm to search for a specific value within the memory.
 
 **Execution:**
@@ -338,13 +338,13 @@ To execute the code, we can load it into the GNUSim8085 simulator and assemble i
 
 The GNUSim8085 simulator also provides the ability to modify the contents of memory and registers during the simulation, allowing for more advanced debugging and testing of the code. Overall, the GNUSim8085 simulator is a powerful tool for working with the 8085 microprocessor architecture and allows for in-depth analysis of the behavior of programs running on this architecture.
 
-![](RackMultipart20230426-1-h5mqso_html_4288ea30424f6c42.png)
+![](RackMultipart20230426-1-h5mqsohtml4288ea30424f6c42.png)
 
-![](RackMultipart20230426-1-h5mqso_html_7fe48588f1795efd.png)
+![](RackMultipart20230426-1-h5mqsohtml7fe48588f1795efd.png)
 
 As we were searching for the number 5, as expected from the program, the address of the number 5 i.e., 0005H has been stored at the memory location 0009H. Attaching the screenshot of the memory.
 
-![](RackMultipart20230426-1-h5mqso_html_52b78856d767051b.jpg)
+![](RackMultipart20230426-1-h5mqsohtml52b78856d767051b.jpg)
 
 From the address 0001H to 0008H i.e., blue border are the memory locations of the array we are trying to do binary search. Similarly, address 0009H is the memory where the address of the target is stored. As expected, address value 5 is stored at 0009H which is the address of the number 5.
 
@@ -410,9 +410,9 @@ The test cases will cover the following scenarios:
 
 - Expected output: The index of the value in the array is 3.
 
-![](RackMultipart20230426-1-h5mqso_html_b6989dfa1f47d082.jpg)
+![](RackMultipart20230426-1-h5mqsohtmlb6989dfa1f47d082.jpg)
 
-![](RackMultipart20230426-1-h5mqso_html_eb254a611e27a7a.jpg)
+![](RackMultipart20230426-1-h5mqsohtmleb254a611e27a7a.jpg)
  As you could see, the **register D** has been set to 7 as per the test case, and the memory locations from 0000H to 0007H are stored with the test case array and as expected, memory location 0009H has the value equivalent to the index value of 7 i.e., 3.
 
 4.2. Searching for a value that does not exist in the array.
@@ -421,9 +421,9 @@ The test cases will cover the following scenarios:
 
 - Expected output: The value is not found, and the result should be 225.
 
-![](RackMultipart20230426-1-h5mqso_html_754e7c5fa8b0c84.jpg)
+![](RackMultipart20230426-1-h5mqsohtml754e7c5fa8b0c84.jpg)
 
-![](RackMultipart20230426-1-h5mqso_html_7eb69b5ad145a027.jpg)
+![](RackMultipart20230426-1-h5mqsohtml7eb69b5ad145a027.jpg)
 
 As you could see, the **register D** has been set to 6 as per the test case, and the memory locations from 0000H to 0007H are stored with the test case array and as expected, memory location 0009H has the value 225 as 6 does not exist in the memory.
 
@@ -433,9 +433,9 @@ As you could see, the **register D** has been set to 6 as per the test case, and
 
 - Expected output: The value is not found, and the result should be 225.
 
-![](RackMultipart20230426-1-h5mqso_html_3dc50dec998315f4.jpg)
+![](RackMultipart20230426-1-h5mqsohtml3dc50dec998315f4.jpg)
 
-![](RackMultipart20230426-1-h5mqso_html_875796c3755b86bf.jpg)
+![](RackMultipart20230426-1-h5mqsohtml875796c3755b86bf.jpg)
 
 As you could see, the **register D** has been set to 1 as per the test case, and the memory locations from 0000H to 0007H are empty as per the test case and as expected, memory location 0009H has the value 225 as memory location is empty so 1 does not exist in the memory.
 
@@ -445,9 +445,9 @@ As you could see, the **register D** has been set to 1 as per the test case, and
 
 - Expected output: The index of the value in the array is 0.
 
-![](RackMultipart20230426-1-h5mqso_html_98f03194ab7dd713.jpg)
+![](RackMultipart20230426-1-h5mqsohtml98f03194ab7dd713.jpg)
 
-![](RackMultipart20230426-1-h5mqso_html_ab8309f43dc21c19.jpg)
+![](RackMultipart20230426-1-h5mqsohtmlab8309f43dc21c19.jpg)
 
 As you could see, the **register D** has been set to 0 as per the test case there is only one element in the array([1]) which is at the zeroth index address, and the memory locations from 0000H to 0007H are empty as per the test case and as expected, memory location 0009H has the value 0 as memory location 0009H has the value equivalent to the index value of 1 i.e., 0.
 
@@ -457,9 +457,9 @@ As you could see, the **register D** has been set to 0 as per the test case ther
 
 - Expected output: The index of the value in the array is 2.
 
-![](RackMultipart20230426-1-h5mqso_html_952f2fc2f5b888a5.jpg)
+![](RackMultipart20230426-1-h5mqsohtml952f2fc2f5b888a5.jpg)
 
-![](RackMultipart20230426-1-h5mqso_html_97a24983eb6a0c7f.jpg)
+![](RackMultipart20230426-1-h5mqsohtml97a24983eb6a0c7f.jpg)
 
 As you could see, the **register D** has been set to 5 as per the test case, and the memory locations from 0000H to 0004H are stored with the test case array and as expected, memory location 0009H has the value equivalent to the index value of 5 i.e., 2.
 
@@ -469,9 +469,9 @@ As you could see, the **register D** has been set to 5 as per the test case, and
 
 - Expected output: The index of the value in the array is 5.
 
-![](RackMultipart20230426-1-h5mqso_html_20d0dfeb800f79b4.jpg)
+![](RackMultipart20230426-1-h5mqsohtml20d0dfeb800f79b4.jpg)
 
-![](RackMultipart20230426-1-h5mqso_html_eb8bdd89d1631883.jpg)
+![](RackMultipart20230426-1-h5mqsohtmleb8bdd89d1631883.jpg)
 
 As you could see, the **register D** has been set to 11 as per the test case, and the memory locations from 0000H to 0005H are stored with the test case array and as expected, memory location 0009H has the value equivalent to the index value of 11 i.e., 5.
 
