@@ -132,7 +132,7 @@ End
 ![](RackMultipart20230426-1-h5mqso_html_dc7d6dc28e119b38.png) Flowchart drawn using [draw.io](https://drive.google.com/file/d/1p8t8xyJM1UkG18Skx9BfgeBSFR4kRzEo/view?usp=sharing) tool.
 
 **8085 Assembly Code**
-
+```ARM Assembly
 _; Set B to 8, which represents the last index of the array to fill_
 
 MVIB, 8
@@ -226,6 +226,7 @@ MOV C, A_; Move the new value of A to C (new upper bound)_
 JMP while_; Jump to while_
 
 exit: HLT _; Halt the execution of the program_
+```
 
 This code contains two parts: memory initialization with values 1 to 8 and a binary search algorithm to search for a specific value within the memory.
 
