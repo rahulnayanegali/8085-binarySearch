@@ -2,7 +2,7 @@
 
 1. Introduction to the Binary Search Algorithm:
 
-The binary search algorithm is a popular search algorithm used to locate an element in a sorted list or array. It works by repeatedly dividing the search interval in half, and comparing the middle element of the interval to the target value. If the target value is less than the middle element, the search is continued in the lower half of the interva; if the target value is greater, the search is continued in the upper half of the interval. The search continues until the target value is found or the interval is empty.
+The binary search algorithm is a popular search algorithm used to locate an element in a sorted list or array. It works by repeatedly dividing the search interval in half, and comparing the middle element of the interval to the target value. If the target value is less than the middle element, the search is continued in the lower half of the interval if the target value is greater, the search is continued in the upper half of the interval. The search continues until the target value is found or the interval is empty.
 
 Binary search is often preferred over linear search (which searches each element one-by-one) for large datasets, as it has a worst-case time complexity of O(log n), where n is the size of the dataset. This means that the algorithm can find the target value in at most log n comparisons, making it much faster than linear search, which has a worst-case time complexity of O(n). However, binary search requires that the dataset is sorted beforehand, which can add some overhead if the dataset is frequently updated or modified. Overall, binary search is a widely-used and effective algorithm for searching sorted datasets.
 
